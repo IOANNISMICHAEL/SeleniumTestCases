@@ -10,11 +10,13 @@ Selenium Web Drivers
 ---------------------------------------------
 Download Selenium Web Drivers from:
 https://selenium.dev/downloads/
+*Can also be found on my Github
 (Download all of the them, IE, Chrome, Firefox and place them into a local file)
 
 Selenium IDE Jar
 -------------------------------------------
 Download Selenium IDE from: https://selenium.dev/downloads/
+*Can also be found on my Github
 Save it in the same local directory as the Web Drivers
 
 Java
