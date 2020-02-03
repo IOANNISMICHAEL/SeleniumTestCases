@@ -1,0 +1,41 @@
+Test Cases as Given
+
+Sign up
+--------------------
+URL: https://bit.ly/2QjiQ6t
+
+Directly leading to this page drop an error so the code is opening the front/main page and then navigating to the Sign up page
+
+
+This page allows users to sign up to the cockpit application.
+Expected behaviour or this page:
+1. The “Vorname” field is required
+2. The “Vorname” field must have at least 3 letters
+3. The “Nachname” field is required
+4. The “Nachname” field must have at least 3 letters
+5. The “Email” field is required
+6. The “Email” value should be a valid email
+7. The “Email” is unique, so if there’s an email already registered, the email should be invalid
+8. The “Passwort” field is required
+9. Checking the “Ich akzeptiere die AGB und nehme die Datenschutzerklärung zur
+Kenntnis.” checkbox is required.
+10. The “Button” is inactive if the form fields are invalid
+11. The “Button” is active when the form fields are valid
+12. When are the fields are valid and the users clicks on “Registrieren”, it should go to the
+“Welcome to Pylot” page
+
+
+Sign in
+--------------------------
+URL: https://bit.ly/37qzerE
+
+Directly leading to this page drop an error so the code is opening the front/main page and then navigating to the Sign up page
+
+This page allows existing users to sign in to the cockpit application.
+Expected behaviour or this page:
+1. When the value of the fields “Email” and “Password” match to an existing user, the user
+should be successful logged in
+2. When the value of the fields “Email” and “Password” don’t match to an existing user, the
+user should see the “Die Anmeldung ist fehlgeschlagen. Das Password und die email
+stimmen nicht überein. Bitte versuchen Sie es erneut.” error message
+
