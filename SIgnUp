@@ -1,0 +1,162 @@
+package Pylot_Package;
+
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class SignUP {
+
+	WebElement vorname,nachname,email,password;
+	String Email;
+	WebElement button;
+	WebDriver driver;
+	WebElement checkbox;
+	
+	
+	
+	
+//Class SetUp will always run before each test
+	@BeforeMethod
+	public void SetUp() {
+		//Set the driver
+		driver = utilities.DriverFactory.open("Firefox");
+		   String WebURL = "https://www.pylot.de/";
+		   driver.get(WebURL);}
+			
+		
+	
+		
+	
+	
+@Test
+public void SignUpForm() {
+	WebElement button;
+	boolean enabled;
+	
+	driver.findElement(By.id("mwclid_nav_header_to-cockpit")).click();
+	driver.findElement(By.id("signup")).click();
+	//Test if button is disabled, if yes prints msg to tester
+	button =  driver.findElement(By.id("kc-submit"));
+	enabled=button.isEnabled();
+   if(enabled) { System.out.println("Button is enabled although it shouldn't");}else System.out.println("Button is disabled");
+   
+   //Fill Vorname
+      vorname=driver.findElement(By.id("firstName"));
+      vorname.clear();
+      //Sends a two digit value in order to make the check for the 3-digit restriction and replace the value with a valid one
+      vorname.sendKeys("IO");
+      vorname.click();
+      if(vorname.getText().length() < 3) {
+    	  System.out.println("Name is invalid it shouldn't enable the button");
+    	  vorname.clear();vorname.sendKeys("IOANNIS");} 
+    
+  //Fill Email
+      ArrayList<String> emails = new ArrayList<String>() ;
+      email=driver.findElement(By.id("email"));
+      email.clear();
+      email.sendKeys("testemail");
+      Email = email.getAttribute("value");
+      String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+       Pattern pattern = Pattern.compile(regex); 
+       
+       
+       //Check if the email is valid
+       Matcher matcher = pattern.matcher(Email);
+ 
+      if(matcher.matches())System.out.println("email is valid"); else {
+    	  System.out.println("Invalid email it shouldn't enable the button");
+    	  email.clear();
+    	  //Enters a valid email
+    	  email.sendKeys("test6@gmail.com");
+    	  Email = email.getAttribute("value");}
+      
+    	
+    	String EMAILS=Email;
+    	//Check if email exists
+    	for (String i : emails) {
+    		if (i.equals(Email)) {
+    			System.out.println("Email exists, it shouldn't enable the button");
+    			button =  driver.findElement(By.id("kc-submit"));
+    			enabled=button.isEnabled();
+    		   if(enabled) { System.out.println("Button is enabled although it shouldn't");}else { System.out.println("Button is disabled");
+    		   //Add the email to the list
+    		   emails.add(Email);}}}
+    		  
+ 
+  //Fill Nachname
+      nachname=driver.findElement(By.id("lastName"));
+      nachname.clear();
+      nachname.sendKeys("MI");
+      nachname.click();
+      if(nachname.getText().length() < 3) {System.out.println("The button shouldn't be enabled");
+    //Test if button is disabled, if yes prints msg to tester
+  	button =  driver.findElement(By.id("kc-submit"));
+  	enabled=button.isEnabled();
+     if(enabled) { System.out.println("Button is enabled although it shouldn't");}else { System.out.println("Button is disabled");
+      nachname.clear();nachname.sendKeys("MICHAEL");} 
+      
+  //Fill password
+      password=driver.findElement(By.id("password"));
+      password.clear();
+      password.sendKeys("1234");
+      //Click on blank space so it can trigger the field validation
+      driver.findElement(By.xpath("//html")).click();
+      
+      String validation = password.getAttribute("class");
+      if(validation.contains("invalid")) {
+    	  System.out.println("Password is invalid it shouldn't enable the button");
+    	//Test if button is disabled, if yes prints msg to tester
+    		button =  driver.findElement(By.id("kc-submit"));
+    		enabled=button.isEnabled();
+    	   if(enabled) { System.out.println("Button is enabled although it shouldn't");}
+    	   else { System.out.println("Button is disabled");
+    	   password.clear();
+    	      password.sendKeys("12345678_kK");}}
+    
+      
+      
+      
+ //Click on checkbox
+      driver.findElement(By.xpath("//html")).click();
+      driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+      driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[1]/div[4]/div/input")).click();
+    
+    //Test if button is disabled, if yes prints msg to tester
+		button =  driver.findElement(By.id("kc-submit"));
+		enabled=button.isEnabled();
+	   if(enabled) { System.out.println("Button is enabled ");
+	       button.click();
+	   }
+	   else System.out.println("Button is disabled - its should be enabled");}
+      
+
+      driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+      
+    if(driver.getPageSource().contains("Willkommen bei Pylot!")) {System.out.println("Page contains th appropriate message");}
+      
+    
+
+      
+
+}
+
+@AfterMethod
+public void tearDown() {
+	
+	driver.close();
+}
+
+	
+}
