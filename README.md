@@ -29,40 +29,41 @@ Download the latest Java jdk from: https://www.java.com/en/download/
 
 Set the Environment - Import Code
 ---------------------------
-Open Eclipse 
-Create new Java Project
-Give the name Amboss
-Press Next
-Select Libraries
-Add External JARs
-Select the Selenium IDE Jar
-Press Finish
-Under src folder of the Project, right-click and create a Package
-Give the  name TestCases
-Rightclick on the package, go under New and create a class 
-Give the name SignIn 
-Right click on the src file>New
-Create a Package 
-Give the name utilities
-Right click on utilities and create a new class
-Give the name DriverFactory
-Copy paste the code found under DriverFactory.txt file
-Save the WebDrivers in a local file
-Replace the directory of the WebDrivers in DriverFactory with the one of your local directory
+1.Open Eclipse 
+2.Create new Java Project
+3.Give the name Amboss
+4.Press Next
+5.Select Libraries
+6.Add External JARs
+7.Select the Selenium IDE Jar
+8.Press Finish
+9.Under src folder of the Project, right-click and create a Package
+10.Give the  name TestCases
+11.Rightclick on the package, go under New and create a class 
+12.Give the name SignIn 
+13.Right click on the src file>New
+14.Create a Package 
+15.Give the name utilities
+16.Right click on utilities and create a new class
+17.Give the name DriverFactory
+18.Copy paste the code found under DriverFactory.txt file
+19.Save the WebDrivers in a local file
+20.Replace the directory of the WebDrivers in DriverFactory with the one of your local directory
 
  
 Install TestNG
-In Eclipse go to Help>Install New Software
-On the UI press Add
-Give Name: TestNG
-Give location; https://dl.bintray.com/testng-team/testng-eclipse-release/
-Press OK
-Wait to download and select TestNG
-Press Next
-Press Next
-Accept License terms
-Press OK
-On Eclipse press Install anyway
+--------------------
+1.In Eclipse go to Help>Install New Software
+2.On the UI press Add
+3.Give Name: TestNG
+4.Give location; https://dl.bintray.com/testng-team/testng-eclipse-release/
+5.Press OK
+6.Wait to download and select TestNG
+7.Press Next
+8.Press Next
+9.Accept License terms
+10.Press OK
+11.On Eclipse press Install anyway
 
 
 
